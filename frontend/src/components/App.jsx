@@ -22,7 +22,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route path={'/'} exact component={Home}/>
+          <Route path={'/'} exact component={LogIn}/>
           <Route path={'/createAccount'} component={CreateAccount}/>
           <Route path={'/logIn'} component={LogIn}/>
           <ProtectedRoute path={'/addParking'} component={AddParking}/>
