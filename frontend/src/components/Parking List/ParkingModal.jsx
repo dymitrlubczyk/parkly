@@ -144,7 +144,7 @@ class ParkingModal extends React.Component{
             }
 
             fetch('http://parkly-tuesday.us-east-1.elasticbeanstalk.com/parkings/'+parking.id, {
-                method: 'PUT', // or 'PUT'
+                method: 'PUT',
                 headers: {
                   'Content-Type': 'application/json',
                   'User-name':'parkly',
@@ -174,8 +174,6 @@ class ParkingModal extends React.Component{
                 })
 
            
-            
-            //tu do bazy
            
         }
 

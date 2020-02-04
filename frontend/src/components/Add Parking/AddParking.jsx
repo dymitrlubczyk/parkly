@@ -75,6 +75,7 @@ const styles = {
 
 }
 
+const numberRegEx = new RegExp('^[0-9]+$')
 
 class AddParking extends React.Component
 {
@@ -89,7 +90,9 @@ class AddParking extends React.Component
             price:0,
             opens:new Date('2000-01-01T00:00:00+00:00'),
             closes:new Date('2000-01-01T00:00:00+00:00'),
-            addressModal:false
+            addressModal:false,
+            priceError:'',
+            spotsNumberError:''
         }
     }
     setAddress=address=>{
@@ -103,6 +106,31 @@ class AddParking extends React.Component
 
     clickCancel=()=>{
         this.setState({addressModal:false})
+    }
+
+    checkPrice=(price)=>{
+        
+        if(!price.toString().match(numberRegEx))
+        {
+            this.setState({priceError:'Wrong format'})
+        }
+        else
+        {
+            this.setState({priceError:''})
+
+        }
+    }
+
+    checkSpots=(spots)=>{
+        if(!spots.toString().match(numberRegEx))
+        {
+            this.setState({spotsNumberError:'Wrong format'})
+        }
+        else
+        {
+            this.setState({spotsNumberError:''})
+
+        }
     }
     clickAdd=()=>{
         const {
@@ -139,6 +167,8 @@ class AddParking extends React.Component
         .then(res=>res.json())
         .then(p=>this.props.parkingAdded(p))
         .then(e=>this.props.history.push("/parkings"))
+
+        console.log(opens)
     }
     render(){
         const {
@@ -149,7 +179,9 @@ class AddParking extends React.Component
             price,
             opens,
             closes,
-            addressModal
+            addressModal,
+            priceError,
+            spotsNumberError
         } = this.state
         
         const {
@@ -162,7 +194,7 @@ class AddParking extends React.Component
             specialCursor
         }=this.props.classes
         
-        
+        const canAdd=city.length>0 && !priceError && !spotsNumberError
         return(
             <>
             {addressModal?
@@ -211,20 +243,24 @@ class AddParking extends React.Component
                     <TextField
                         label={'Number of spots'}
                         type={'number'}
-                        onChange={e => this.setState({spotsNumber:e.target.value})}
+                        onChange={e =>{ this.setState({spotsNumber:e.target.value});this.checkSpots(e.target.value)}}
                         value={spotsNumber}
                         className={field}
                         fullWidth
+                        error={spotsNumberError.length>0}
+                        helperText={spotsNumberError}
                         variant={'outlined'}
                         InputProps={{ inputProps: { min: 0} }}
                         />
                     <TextField
                         label={'Price per hour'}
                         type={'number'}
-                        onChange={e => this.setState({price:e.target.value})}
+                        onChange={e => {this.setState({price:e.target.value});this.checkPrice(e.target.value)}}
                         value={price}
                         className={field}
                         fullWidth
+                        error={priceError.length>0}
+                        helperText={priceError}
                         variant={'outlined'}
                         InputProps={{
                             endAdornment: <InputAdornment position='end'>PLN</InputAdornment>,
@@ -265,7 +301,7 @@ class AddParking extends React.Component
                         className={button}
                         variant={'contained'}
                         color={'primary'}
-                        disabled={!city}
+                        disabled={!canAdd}
                         >
                         add
                     </Button>
