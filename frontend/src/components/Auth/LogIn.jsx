@@ -14,6 +14,7 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { userLogIn, fetchParkings,fetchReservations } from '../../redux/actions'
+import { Base64 } from 'js-base64'
 
 
 var passwordHash = require('password-hash');
@@ -81,7 +82,7 @@ class LogIn extends React.Component{
               'Content-Type': 'application/json',
               'User-name':'parkly',
               'email':this.state.email,
-              'password':this.state.password
+              'password':Base64.encode(this.state.password)
             },
           })
           .then((response) => {

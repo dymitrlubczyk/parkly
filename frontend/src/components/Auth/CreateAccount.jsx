@@ -11,6 +11,8 @@ import Header from '../Header'
 import { withStyles } from '@material-ui/core/styles'
 import { withRouter } from 'react-router-dom'
 
+import { Base64 } from 'js-base64'
+
 const styles = {
     
     card:{
@@ -94,12 +96,14 @@ class CreateAccount extends React.Component{
             surname,
         }=this.state
 
+        let p=Base64.encode(password)
+
         const user = { 
             name,
             surname,
             email, 
             phoneNumber,
-            password,
+            p,
         };
 
         //zapisz do bazy(do zmiany)
