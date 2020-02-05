@@ -39,11 +39,8 @@ function getISOStringDate(date) {
 function getISOStringTime(date) {
     const dateAndTime = date.toISOString().split('T')
     const time = dateAndTime[1].split(':')
-    const hour=parseInt(time[0])
-    if(hour>12)
-        return (hour-12)+':'+time[1]+' PM'
     
-    return time[0]+':'+time[1]+' AM'
+    return time[0]+':'+time[1]
 }
 
 class ReservationModal extends React.Component{
