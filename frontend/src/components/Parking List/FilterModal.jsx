@@ -12,13 +12,10 @@ import { withStyles } from '@material-ui/styles'
 
 function ValueLabelComponent(props) {
     let { children, open, value } = props;
-
-    if(value>12)
-        value=(value-12)+' PM'
-    else
-        value=value+' AM'
+    
+    value=value+':00'
     return (
-      <Tooltip open={open} enterTouchDelay={0} placement="top" title={value}>
+      <Tooltip open={open} leaveDelay={2000} enterTouchDelay={0} placement="top" title={value}>
         {children}
       </Tooltip>
     );
@@ -143,7 +140,7 @@ class FilterModal extends React.Component{
                         onChange={ (e,newValue) => this.setState({hours: newValue})}
                         ValueLabelComponent={ValueLabelComponent}
                         min={0}
-                        max={24}
+                        max={23}
                     />
                     <Grid
                         container
