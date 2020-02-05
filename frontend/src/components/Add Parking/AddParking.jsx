@@ -75,7 +75,7 @@ const styles = {
 
 }
 
-const numberRegEx = new RegExp('^[0-9]+$')
+const numberRegEx = new RegExp('^[1-9][0-9]*$')
 
 class AddParking extends React.Component
 {
@@ -112,7 +112,7 @@ class AddParking extends React.Component
         
         if(!price.toString().match(numberRegEx))
         {
-            this.setState({priceError:'Wrong format'})
+            this.setState({priceError:'Invalid input'})
         }
         else
         {
@@ -124,7 +124,7 @@ class AddParking extends React.Component
     checkSpots=(spots)=>{
         if(!spots.toString().match(numberRegEx))
         {
-            this.setState({spotsNumberError:'Wrong format'})
+            this.setState({spotsNumberError:'INvalid input'})
         }
         else
         {
