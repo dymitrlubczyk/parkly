@@ -279,18 +279,20 @@ class AddParking extends React.Component
                                 margin="normal"
                                 label="Opens"
                                 value={opens}
+                                ampm={false}
+                                views={["hours"]}
                                 onChange={date => this.setState({opens:date})}
                                 className={timer}
-                                minutesStep={60}
                                 />
                             
                             <TimePicker
                                 margin="normal"
                                 label="Closes"
                                 value={closes}
+                                ampm={false}
+                                views={["hours"]}
                                 onChange={date=>this.setState({closes:date})}
                                 className={timer}
-                                minutesStep={60}
                                 />
                                 
                         </Grid>
