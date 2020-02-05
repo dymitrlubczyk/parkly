@@ -168,7 +168,7 @@ class AddParking extends React.Component
         .then(p=>this.props.parkingAdded(p))
         .then(e=>this.props.history.push("/parkings"))
 
-        console.log(opens)
+
     }
     render(){
         const {
