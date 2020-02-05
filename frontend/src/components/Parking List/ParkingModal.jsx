@@ -303,7 +303,8 @@ class ParkingModal extends React.Component{
                                 <TimePicker
                                     value={iOpens}
                                     onChange={date => this.setState({iOpens:date})}
-                                    minutesStep={60}
+                                    ampm={false}
+                                    views={["hours"]}
                                     className={timer}
                                     InputProps={{
                                         classes: {
@@ -314,8 +315,9 @@ class ParkingModal extends React.Component{
                                 
                                 <TimePicker
                                     value={iCloses}
+                                    ampm={false}
+                                    views={["hours"]}
                                     onChange={date=>this.setState({iCloses:date})}
-                                    minutesStep={60}
                                     className={timer}
                                     InputProps={{
                                         classes: {
