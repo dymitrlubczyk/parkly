@@ -105,11 +105,11 @@ class CreateAccount extends React.Component{
         //zapisz do bazy(do zmiany)
         //haslo musi byc hashowane(do zmiany)
 
-        fetch('http://localhost:8080/parking-owner', {
+        fetch('http://parkly-tuesday.us-east-1.elasticbeanstalk.com/parking-owner', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json',
-                'user_name': 'parkly'
+                'User-name': 'parkly'
             },
             body: JSON.stringify(user)
         })
@@ -118,7 +118,7 @@ class CreateAccount extends React.Component{
     
     clickNext=()=>{
     
-        fetch('http://localhost:8080/parking-owner/email?emailAddress='+this.state.email)
+        fetch('http://parkly-tuesday.us-east-1.elasticbeanstalk.com/parking-owner/email?emailAddress='+this.state.email)
         .then(result=>{
             if(result.status===200)
                 this.setState({firstPage:false})

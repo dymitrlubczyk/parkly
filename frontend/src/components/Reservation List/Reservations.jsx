@@ -90,7 +90,7 @@ setFilters=(city,street,profit)=>{
     })
 
     const user=this.props.user;
-    let url='http://localhost:8080/reservations/filter/'+user.id+'?'
+    let url='http://parkly-tuesday.us-east-1.elasticbeanstalk.com/reservations/filter/'+user.id+'?'
 
     if(city!='')
     {
@@ -109,8 +109,8 @@ setFilters=(city,street,profit)=>{
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'user_name':'parkly',
-          'user_token':user.userToken
+          'User-name':'parkly',
+          'User-token':user.userToken
         },
       })
         .then(res => res.json())

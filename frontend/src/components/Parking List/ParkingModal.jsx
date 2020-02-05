@@ -88,11 +88,11 @@ class ParkingModal extends React.Component{
     }
 
     deleteParking=()=>{
-        fetch('http://localhost:8080/parkings/'+this.props.parking.id, {
+        fetch('http://parkly-tuesday.us-east-1.elasticbeanstalk.com/parkings/'+this.props.parking.id, {
             method: 'DELETE',
             headers: {
-                'user_name':'parkly',
-                'user_token':this.props.user.userToken
+                'User-name':'parkly',
+                'User-token':this.props.user.userToken
                 },
             })
             .then(e=>this.props.parkingDeleted(this.props.parking))
@@ -143,12 +143,12 @@ class ParkingModal extends React.Component{
                 ownerId:this.props.user.id
             }
 
-            fetch('http://localhost:8080/parkings/'+parking.id, {
+            fetch('http://parkly-tuesday.us-east-1.elasticbeanstalk.com/parkings/'+parking.id, {
                 method: 'PUT', // or 'PUT'
                 headers: {
                   'Content-Type': 'application/json',
-                  'user_name':'parkly',
-                  'user_token':this.props.user.userToken
+                  'User-name':'parkly',
+                  'User-token':this.props.user.userToken
                 },
                 body: JSON.stringify(parking)
               })

@@ -92,7 +92,7 @@ class Parkings extends React.Component{
             filterModal:false
         })
         const user=this.props.user;
-        let url='http://localhost:8080/parkings/filter?ownerId='+user.id
+        let url='http://parkly-tuesday.us-east-1.elasticbeanstalk.com/parkings/filter?ownerId='+user.id
 
         if(city!='')
         {
@@ -111,8 +111,8 @@ class Parkings extends React.Component{
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              'user_name':'parkly',
-              'user_token':user.userToken
+              'User-name':'parkly',
+              'User-token':user.userToken
             },
           })
             .then(res => res.json())

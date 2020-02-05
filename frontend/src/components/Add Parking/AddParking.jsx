@@ -125,13 +125,13 @@ class AddParking extends React.Component
             closes:closes.getHours(),
             ownerId:this.props.user.id
         }
-        fetch('http://localhost:8080/parkings', {
+        fetch('http://parkly-tuesday.us-east-1.elasticbeanstalk.com/parkings', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'user_name':'parkly',
-                'user_token':this.props.user.userToken
+                'User-name':'parkly',
+                'User-token':this.props.user.userToken
 
             },
             body: JSON.stringify(parking)

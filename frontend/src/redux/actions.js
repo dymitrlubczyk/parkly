@@ -96,12 +96,12 @@ export const reservationsModified = reservations =>{
 export const fetchParkings = (id,token) => {
   return dispatch => {
     dispatch(fetchParkingsLaunch());
-    fetch("http://localhost:8080/parkings/my-parkings/"+id,{
+    fetch("http://parkly-tuesday.us-east-1.elasticbeanstalk.com/parkings/my-parkings/"+id,{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'user_name':'parkly',
-        'user_token':token
+        'User-name':'parkly',
+        'User-token':token
       },
     })
       .then(res => res.json())
@@ -118,12 +118,12 @@ export const fetchReservations = (id,token,flag) => {
     let url=''
     if(flag==='parking')
     {
-      url='http://localhost:8080/reservations/parking/'+id
+      url='http://parkly-tuesday.us-east-1.elasticbeanstalk.com/reservations/parking/'+id
     }
 
     else
     {
-      url='http://localhost:8080/reservations/filter/'+id
+      url='http://parkly-tuesday.us-east-1.elasticbeanstalk.com/reservations/filter/'+id
     }
     return dispatch => {
       dispatch(fetchReservationsLaunch());
@@ -131,8 +131,8 @@ export const fetchReservations = (id,token,flag) => {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'user_name':'parkly',
-          'user_token':token
+          'User-name':'parkly',
+          'User-token':token
         },
       })
         .then(res => res.json())

@@ -75,11 +75,11 @@ class LogIn extends React.Component{
     clickLogIn=()=>{
 
 
-         fetch('http://localhost:8080/parking-owner/login', {
+         fetch('http://parkly-tuesday.us-east-1.elasticbeanstalk.com/parking-owner/login', {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              'user_name':'parkly',
+              'User-name':'parkly',
               'email':this.state.email,
               'password':this.state.password
             },
