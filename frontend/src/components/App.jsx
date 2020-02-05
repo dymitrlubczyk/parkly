@@ -15,7 +15,8 @@ import AddParking from './Add Parking/AddParking'
 import Parkings from './Parking List/Parkings'
 import Reservations from './Reservation List/Reservations'
 
-const store = createStore(appReducer,initialState,compose(applyMiddleware(thunk),composeWithDevTools()))
+const store = createStore(appReducer,initialState,compose(applyMiddleware(thunk),
+                          window.devToolsExtension ? window.devToolsExtension() : f => f))
 
 const App = () => {
   return(
