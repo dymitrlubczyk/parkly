@@ -153,7 +153,7 @@ class ParkingModal extends React.Component{
                 body: JSON.stringify(parking)
               })
               .then((response) => {
-                  if(response.status===403)
+                  if(response.status===400)
                   {
                     this.setState({snackBar:true})
                     return;
