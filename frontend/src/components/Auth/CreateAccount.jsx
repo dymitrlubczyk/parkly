@@ -88,7 +88,7 @@ class CreateAccount extends React.Component{
         }
     }
     clickRegister = () => {
-        const {
+        let {
             email,
             password,
             phoneNumber,
@@ -96,14 +96,14 @@ class CreateAccount extends React.Component{
             surname,
         }=this.state
 
-        let p=Base64.encode(password)
+        password = Base64.encode(password)
 
         const user = { 
             name,
             surname,
             email, 
             phoneNumber,
-            p,
+            password,
         };
 
         //zapisz do bazy(do zmiany)
