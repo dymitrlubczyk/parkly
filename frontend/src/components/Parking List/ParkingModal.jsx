@@ -369,7 +369,9 @@ class ParkingModal extends React.Component{
                 }
             </Grid>
         </Card>
-        <Snackbar open={snackBar}>
+        <Snackbar 
+            open={snackBar}
+            autoHideDuration={3000}>
         <SnackbarContent
            style={{backgroundColor: '#494949'}}
             action={(
